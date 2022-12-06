@@ -12,16 +12,16 @@ function test_input($data) {
   
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
      
-    $username = test_input($_POST["user_name"]);
-    $password = test_input($_POST["user_password"]);
+    $username = test_input($_POST["username"]);
+    $password = test_input($_POST["password"]);
     $stmt = $conn->prepare("SELECT * FROM users");
     $stmt->execute();
     $users = $stmt->fetchAll();
      
     foreach($users as $user) {
          
-        if(($user['username'] == $username) &&
-            ($user['password'] == $password)) {
+        if(($user['user_name'] == $username) &&
+            ($user['user_password'] == $password)) {
                 header("location: admin/adminpage.php");
         }
         else {
